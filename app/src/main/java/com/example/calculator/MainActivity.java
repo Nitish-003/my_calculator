@@ -1,10 +1,13 @@
 package com.example.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
     Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn00, btnClear, btn1Del, btnAdd, btnSub, btnMul, btnDiv, btnEqual, btnPercent, btnDot;
 
     float a=0,b=0, result=0;
+
+    Switch themeSwitch;
+
+    ConstraintLayout cl1,cl2;
 
     int operation = 0;
     //float result2 =0, c=0,d=0;
@@ -45,8 +52,9 @@ public class MainActivity extends AppCompatActivity {
         btnEqual = findViewById(R.id.btnEqual);
         btnPercent = findViewById(R.id.btnPercent);
         btnDot = findViewById(R.id.btnDot);
-
-
+        themeSwitch = findViewById(R.id.switch1);
+        cl1 = findViewById(R.id.constraint1);
+        cl2 = findViewById(R.id.constraintLayout);
 
         btn1.setOnClickListener(view -> {
 
@@ -116,6 +124,15 @@ public class MainActivity extends AppCompatActivity {
             if (txtInp.getText().length() != 0){
                 String in = txtInp.getText().toString();
                 String v = in + "0";
+                txtInp.setText(v);
+            }
+
+        });
+
+        btnDot.setOnClickListener(view -> {
+            if (txtInp.getText().length() != 0){
+                String in = txtInp.getText().toString();
+                String v = in + ".";
                 txtInp.setText(v);
             }
 
@@ -235,6 +252,20 @@ public class MainActivity extends AppCompatActivity {
             }
             else if(text.length() == 1) {
                 txtInp.setText("");
+            }
+        });
+
+        themeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b) {
+                    cl1.setBackgroundColor(getResources().getColor(R.color.white));
+                    cl2.setBackgroundColor(getResources().getColor(R.color.white));
+                }
+                else {
+                    cl1.setBackgroundColor(getResources().getColor(R.color.black));
+                    cl2.setBackgroundColor(getResources().getColor(R.color.black));
+                }
             }
         });
     }

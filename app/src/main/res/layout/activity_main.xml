@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/constraint1"
     android:layout_height="match_parent"
     android:background="#151515"
     tools:context=".MainActivity">
@@ -24,7 +25,7 @@
     <TextView
         android:id="@+id/textInput"
         android:layout_width="381dp"
-        android:layout_height="87dp"
+        android:layout_height="65sp"
         android:text=""
         android:textAlignment="textEnd"
         android:textColor="@color/white"
@@ -34,22 +35,22 @@
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.094" />
+        app:layout_constraintVertical_bias="0.148" />
 
     <TextView
         android:id="@+id/textOutput"
         android:layout_width="381dp"
-        android:layout_height="87dp"
+        android:layout_height="65sp"
         android:text=""
         android:textAlignment="textEnd"
         android:textColor="@color/white"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.264" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -369,6 +370,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.950" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="60dp"
+        android:layout_height="48dp"
+        android:background="@drawable/oval_button"
+        app:layout_constraintBottom_toTopOf="@+id/textInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
