@@ -3,13 +3,11 @@ package com.example.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     float a=0,b=0, result=0;
 
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch themeSwitch;
 
     ConstraintLayout cl1,cl2;
@@ -231,7 +230,6 @@ public class MainActivity extends AppCompatActivity {
 
         btnEqual.setOnClickListener(view -> {
             Calculation();
-            Toast.makeText(this, "Equal Pressed", Toast.LENGTH_SHORT).show();
             operation = 0;
             txtInp.setText("");
         });
@@ -255,17 +253,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        themeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b) {
-                    cl1.setBackgroundColor(getResources().getColor(R.color.white));
-                    cl2.setBackgroundColor(getResources().getColor(R.color.white));
-                }
-                else {
-                    cl1.setBackgroundColor(getResources().getColor(R.color.black));
-                    cl2.setBackgroundColor(getResources().getColor(R.color.black));
-                }
+        themeSwitch.setOnCheckedChangeListener((compoundButton, b) -> {
+            if(b) {
+                cl1.setBackgroundColor(getResources().getColor(R.color.white));
+                cl2.setBackgroundColor(getResources().getColor(R.color.white));
+                txtInp.setTextColor(getResources().getColor(R.color.white));
+                txtOut.setTextColor(getResources().getColor(R.color.white));
+            }
+            else {
+                cl1.setBackgroundColor(getResources().getColor(R.color.black));
+                cl2.setBackgroundColor(getResources().getColor(R.color.black));
+                txtInp.setTextColor(getResources().getColor(R.color.black));
+                txtOut.setTextColor(getResources().getColor(R.color.black));
             }
         });
     }
@@ -285,17 +284,13 @@ public class MainActivity extends AppCompatActivity {
             } else if (operation == 2) {
                 result = a - b;
             } else if (operation == 3) {
-                result = a / b;
+                    result = a / b;
+
             } else if (operation == 4) {
                 result = a * b;
             } else if (operation == 5) {
                 result = b/a;
             }
-            a = result;
-            String te = String.valueOf(result);
-            if (te.endsWith(".0"))
-                te = te.substring(0,te.length() -2);
-            txtOut.setText(te);
         }
 
     }
